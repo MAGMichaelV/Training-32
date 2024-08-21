@@ -9,6 +9,7 @@ def index():
 
     # Initialize a variable to store the processed age value, default is 0
     result_age = 0
+    result_comment = ""
     
     if request.method == 'POST':
         try:
@@ -16,14 +17,17 @@ def index():
             age = int(request.form['age'])
             # Calculation: Add 6 to the input age and store the result
             result_age = age / 2 + 7
+
+            if result_age <= 17:
+                result_age = "in the legal age bro! police is behind you"
+
         except ValueError:
             # If the input is not a valid integer, return an empty string
             result_age = ""
-    if result_age >= 18:
-     # Render the index.html template and pass the processed age to it
-        return render_template("index.html", age=result_age)
-    else:
-        return render_template("index.html", "in the legal age bro! the police is behind you!")
+
+
+    # Render the index.html template and pass the processed age to it
+    return render_template("index.html", age=result_age)
 
 # Run the Flask application in debug mode when the script is executed directly
 if __name__ == '__main__':
