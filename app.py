@@ -19,9 +19,11 @@ def index():
         except ValueError:
             # If the input is not a valid integer, return an empty string
             result_age = ""
-            
-    # Render the index.html template and pass the processed age to it
-    return render_template("index.html", age=result_age)
+    if result_age >= 18:
+     # Render the index.html template and pass the processed age to it
+        return render_template("index.html", age=result_age)
+    else:
+        return render_template("index.html", "in the legal age bro! the police is behind you!")
 
 # Run the Flask application in debug mode when the script is executed directly
 if __name__ == '__main__':
