@@ -18,7 +18,7 @@ def index():
             # Calculation: Add 6 to the input age and store the result
             result_age = age / 2 + 7
 
-            if result_age <= 18:
+            if result_age < 18:
                 result_age = "in the legal age bro! police is behind you"
 
         except ValueError:
